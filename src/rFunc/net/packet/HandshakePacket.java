@@ -18,7 +18,7 @@
 
 package rFunc.net.packet;
 
-import rFunc.RemoteFunc;
+import rFunc.RFunc;
 
 import java.nio.charset.StandardCharsets;
 
@@ -44,12 +44,12 @@ public class HandshakePacket extends Packet {
   }
 
   public HandshakePacket() {
-    this(RemoteFunc.getVersion());
+    this(RFunc.getVersion());
   }
 
 
   public boolean isValid() {
-    return version.equals(RemoteFunc.getVersion());
+    return version.equals(RFunc.getVersion());
   }
 
 

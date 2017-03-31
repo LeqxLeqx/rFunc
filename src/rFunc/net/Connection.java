@@ -18,7 +18,7 @@
 
 package rFunc.net;
 
-import rFunc.RemoteFunc;
+import rFunc.RFunc;
 import rFunc.net.packet.HandshakePacket;
 import rFunc.net.packet.Packet;
 import rFunc.net.packet.PacketType;
@@ -69,7 +69,7 @@ abstract class Connection {
     if (packet.type != PacketType.HANDSHAKE)
       throw new IOException("Error in handshake. Invalid packet type sent by respondent");
     else if (!((HandshakePacket) packet).isValid())
-      throw new IOException(String.format("Error in handshake. Version mismatch between this library and respondent library (%s != %s)", RemoteFunc.getVersion(), ((HandshakePacket) packet).version));
+      throw new IOException(String.format("Error in handshake. Version mismatch between this library and respondent library (%s != %s)", RFunc.getVersion(), ((HandshakePacket) packet).version));
 
 
     handshakeComplete = true;

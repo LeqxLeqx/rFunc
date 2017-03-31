@@ -21,7 +21,7 @@ package rFunc;
 /**
  * Author:    LeqxLeqx
  */
-public class RemoteFunc {
+public class RFunc {
 
   private final static int
           RELEASE = 0,
