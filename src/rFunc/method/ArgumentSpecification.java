@@ -38,6 +38,56 @@ public class ArgumentSpecification {
 
 
   /**
+   * Parses the provided string as an argument specification. Any string
+   * produced by the invocation of the toString() method on an
+   * Argument specification object will be parsable
+   *
+   * @param string string to be parsed
+   * @return an ArgumentSpecification object represented by the string
+   */
+  public static ArgumentSpecification parse(String string) {
+    if (string == null)
+      throw new IllegalArgumentException("Cannot parse null string as argument specification");
+
+    string = string.trim();
+
+    if (string.isEmpty())
+      return NONE;
+
+    String[]
+            split = string.split("\\,"),
+            names = new String[split.length];
+    ValueType[]
+            valueTypes = new ValueType[split.length];
+
+
+    for(int k = 0; k < split.length; k++) {
+
+      String substring = split[k].trim();
+
+      String[] substringSplit = substring.split(" ");
+
+      if (substringSplit.length == 1) {
+        valueTypes[k] = ValueType.parse(substringSplit[0]);
+        if (valueTypes[k] == null)
+          throw new IllegalArgumentException("Cannot parse '" + substringSplit[0] + "' as a value type");
+        names[k] = "arg" + k;
+      }
+      else if (substringSplit.length == 2) {
+        valueTypes[k] = ValueType.parse(substringSplit[0]);
+        if (valueTypes[k] == null)
+          throw new IllegalArgumentException("Cannot parse '" + substringSplit[0] + "' as a value type");
+        names[k] = substringSplit[1];
+      }
+      else
+        throw new IllegalArgumentException("Cannot parse '" + string + "' as argument specification");
+
+    }
+
+    return new ArgumentSpecification(valueTypes, names);
+  }
+
+  /**
    * Parses a byte representation of an argument specification
    *
    * @param data the data to parse

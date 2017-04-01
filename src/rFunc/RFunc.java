@@ -25,7 +25,7 @@ public class RFunc {
 
   private final static int
           RELEASE = 0,
-          MAJOR = 1,
+          MAJOR = 2,
           MINOR = 1
                   ;
 
