@@ -218,6 +218,7 @@ public class Client {
         return nSpec.getMethods();
     }
 
+    System.out.println("NoneFound");
     return null;
   }
 

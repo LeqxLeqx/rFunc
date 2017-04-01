@@ -140,6 +140,7 @@ public class Environment {
    * @return the namespace indicated, or null if none exists
    */
   public Namespace getNamespace(String name) {
+
     for(Namespace n : namespaces) {
       if (n.name.equals(name))
         return n;

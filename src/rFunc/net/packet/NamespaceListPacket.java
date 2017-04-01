@@ -35,12 +35,12 @@ public class NamespaceListPacket extends Packet {
     LinkedList<String> names = new LinkedList<>();
 
     for(int k = 0; k < data.length; k++) {
-      if(data[0] == 0) {
+      if(data[k] == 0) {
         names.add(new String(buffer.toByteArray(), StandardCharsets.UTF_8));
         buffer.reset();
       }
       else {
-        buffer.write(data[0] & 0xFF);
+        buffer.write(data[k] & 0xFF);
       }
     }
 
