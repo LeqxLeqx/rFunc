@@ -260,6 +260,11 @@ public class Server implements Runnable{
       log.addWarning(String.format("Invocation exception incurred: %s", e.getMessage()));
 
       return new ErrorPacket("Invocation exception: " + e.getMessage());
+    } catch (Throwable t) {
+
+      log.addException(t);
+
+      return new ErrorPacket("Server error: " + t.getMessage());
     }
 
   }

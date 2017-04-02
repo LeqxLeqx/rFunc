@@ -238,7 +238,7 @@ public class ServerLog {
    *
    * @param e content of log entry
    */
-  public synchronized void addException(Exception e) {
+  public synchronized void addException(Throwable e) {
     if (isExceptionSuppressed()) return;
 
     String message = e.getMessage() + "\n";
