@@ -257,21 +257,24 @@ public class ServerLog {
 
     String string = String.format("[ %s ] (%s) : %s", e.type.string, e.formattedTime(), e.string);
 
-    if ((output & STDOUT) > 0) {
+    if ((output & STDOUT) != 0) {
       System.out.println(string);
       System.out.flush();
     }
-    if ((output & STDERR) > 0) {
+    if ((output & STDERR) != 0) {
       System.err.println(string);
       System.err.flush();
     }
-    if ((output & FILE) > 0) {
+    if ((output & FILE) != 0) {
       if (outputFile != null) {
         try {
 
-          Files.write(outputFile.toPath(), (string + "\n").getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
+          Files.write(outputFile.toPath(), (string + "\n").getBytes(StandardCharsets.UTF_8), outputFile.exists() ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
 
-        } catch (IOException er) {}
+
+        } catch (IOException er) {
+          er.printStackTrace();
+        }
       }
     }
 
