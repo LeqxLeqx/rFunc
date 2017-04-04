@@ -58,7 +58,7 @@ public enum ValueType {
    */
   public static ValueType parse(String string) {
     for(ValueType vt : values()) {
-      if (vt.name.equals(string))
+      if (vt.name.equalsIgnoreCase(string))
         return vt;
     }
 
