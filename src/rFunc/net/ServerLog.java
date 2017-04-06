@@ -75,6 +75,15 @@ public class ServerLog {
     this.output = output;
   }
 
+  /**
+   * Gets the output type bits
+   *
+   * @return The output protocol bits
+   */
+  public synchronized int getOutput() {
+    return this.output;
+  }
+
   private synchronized boolean isSuppressed(ServerLogEntryType slet) {
     return traceTypeSuppression.contains(slet);
   }

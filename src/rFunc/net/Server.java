@@ -221,7 +221,7 @@ public class Server implements Runnable{
    */
   public void start(int port) throws IOException {
 
-    log.addInfo("Starting server...");
+    log.addInfo(String.format("Starting server on port %d...", port));
 
     try {
 
